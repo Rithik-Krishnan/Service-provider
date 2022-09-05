@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign up</title>
+        <link rel="shortcut icon" href='{% static "images/signup.png" %}'>
+<style>
+    
+  
+  body{
+    margin: 0;
+    padding:0;
+    background: #fff;
+    background: url('{% static "/static/images/worker.jpg" %}');
+    }
+    .main{
+      padding:-22px 0 0 22px;
+    }
+    
+    
+    form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid #9c9c9c;
+    border-radius: 10px;
+    width: 750px;
+    padding: 25px;
+    background: #fff;
+    padding-bottom: -30px;
+    }
+  
+    .head{
+    padding-left: 10px;
+    }
+    .head h3{
+    margin: 0;
+    font-size: 23px;
+    font-family: jost;
+    position: relative;
+    letter-spacing: 1px;
+    }
+    input{
+    outline:none;
+    border: 1px solid #9c9c9c;
+    border-radius: 5px;
+    padding: 0 10px;
+    height: 35px;
+    font-size: 15px;
+    }
+    input:focus{
+    border: 1.5px solid #1f52f9;
+    }
+    .name{
+    display:block;
+    }
+    input[type="name"]{
+    display: block;
+    margin: 5px 0 0 10px;
+    }
+    input[type="username"]{
+    display: block;
+    width: 320px;
+    margin: 10px 0 0 10px;
+    }
+    input[type="email"]{
+    display: block;
+    width: 320px;
+    margin: 10px 0 0 10px;
+    }
+    
+    .pass{
+    display: inline-block;
+    }
+    .password{
+    display: block;
+    width: 140px;
+    margin: 0 5px 0 10px;
+    }
+    label{
+    position: relative;
+    font-family:roboto;
+    color: #555;
+    font-size: 15px;
+    pointer-events: none;
+    left: 20px;
+    top: -28px;
+    transition: .2s all;
+    }
+    input:focus ~label,
+    input:valid ~ label{
+    top: -49px;
+    left: 15px;
+    background: #fff;
+    padding: 0 5px;
+    font-size: 10px;
+    color: #1f52f9;
+    }
+    a{
+    position: relative;
+    font-family: roboto;
+    text-decoration: none;
+    display: block;
+    }
+    .line1{
+    font-size: 12px;
+    margin: -30px 0 0 15px;
+    }
+    .line2{
+    color: #1144ed;
+    font-size: 15px;
+    margin: 20px 0 20px 15px;
+    }
+    .line3{
+    font-size: 12px;
+    margin: -10px 0 0 15px;
+    width: 310px;
+    }
+    .line4{
+    font-size: 15px;
+    margin: 20px 18px;
+    color: #4971f6;
+    display:block;
+    font-family: arial rounded mt;
+    top:34px;    
+    }
+    input[type="submit"]{
+    background:  #4971f6;
+    color: #fff;
+    border: none;
+    padding:10px 30px;
+    border-radius: 5px;
+    margin:  -30px 0 0px 240px;
+    cursor: pointer;
+    font-size: 15px;
+    top:22%;
+    }
+    input[type="submit"]:hover{
+    background: #254fdb;
+    }
+    .iconeye{
+    display: inline-block;
+    }
+    #eye{
+    display: block;
+    position: relative;
+    top: -18px;
+    width:27px;
+    cursor: pointer;
+    }
+    .side-image{
+    display: inline-block;
+    position: relative;
+    top: 150px;
+    left: 46%;
+    transform: translate(50%,50%);
+    }
+    .side-logo{
+    width: 230px;
+    }
+    #myVideo {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%; 
+      min-height: 100%;
+    }
+
+    .logo2{
+      padding: 11px  -11px;
+      padding-bottom: -45px;
+      top:68px;
+    }
+  
+   </style>
+    
+    
+    </head>
+    
+<body>
+  <video autoplay loop class="video-background" id="myVideo" muted plays-inline>
+  <source src='{% static "videos/clouds.mp4" %}' type="video/mp4">
+  </video>
+    
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role = "alert">
+    <strong>Message:</strong>{{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+    <span aria-hidden="true">&times;</span>
+    </button>    
+    </div>
+    {% endfor %}
+    
+
+    <div class="main">
+        <form class="" method ="post" action="/signup">
+            {% csrf_token %}
+          <div class="logo2">
+            <img src='{% static "images/logo2.png" %}' alt="hey" class="logo2">
+          </div>
+            <b><h3>Create your Quick Quick Account</h3></b><br><br>
+          
+          <div class="name">
+            <input type="name" id = "fname" name="fname" required>
+            <label>First name</label>
+          </div>
+          <div class="name">
+            <input type="name" id = "lname" name="lname" required onkeyup="this.setAttribute('value', this.value);"  value="">
+            <label>Last Name</label>
+          <div class="last-name">
+            <input type="username" id = "username" name="username" required>
+            <label>Username</label>
+          </div>
+          <div class="user-name">
+            <input type="email" id = "email" name="email" required>
+            <label>Email</label>
+          </div>
+          </div>
+          <div class="pass">
+            <input type="password" class="password" name="pass1" id="pass1" required>
+            <label>Password</label>
+          </div>
+          <div class="pass">
+            <input type="password" class="password" name="pass2" id="pass2" required>
+            <label>Confirm password</label>
+            </div>
+            <div class="iconeye">
+              <img src='{% static "images/eyehide.png" %}' onclick="show();" id="eye">
+              </div>
+          
+          <a href="/signin" class="line4">Sign in instead</a>
+          <input type="submit" value="signup">
+        </form>
+        <div class="side-image">
+          <img src='{% static "images/sideimage.jpg" %}' alt="" class="side-logo">
+        </div>
+        </div>
+
+<!--.........................JAVA SCRIPT............................-->
+
+<script type="text/javascript">
+
+  function show(){
+
+    var password= document.getElementById('pass1');
+    confirm= document.getElementById('pass2');
+    image= document.getElementById('eye');
+
+    if (password.type==="password",confirm.type==="password") {
+      password.type="text";
+      confirm.type="text";
+      image.setAttribute('src', '{% static "images/eyeshow.png" %}');
+
+    }
+    else if (password.type==="text",confirm.type==="text"){
+      password.type="password";
+      confirm.type="password";
+      image.setAttribute('src', '{% static "images/eyehide.png" %}');
+    }
+  }
+
+  </script>
+    </body>
+    </html>
